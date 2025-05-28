@@ -109,7 +109,7 @@ nav {
     color: var(--light);
     overflow: hidden;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), 
-                url('../img/Slider_HESA_2024_2800x1000px_2.webp') center/cover no-repeat;
+                url('Slider_HESA_2024_2800x1000px_2.webp') center/cover no-repeat;
 }
 
 .title h1 {
