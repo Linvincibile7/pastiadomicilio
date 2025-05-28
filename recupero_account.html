@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recupero Account</title>
+    <link rel="stylesheet" href="recupero_account.css">
+</head>
+<body>
+     <div class="container">
+    <h2>Recupera la Password</h2>
+    <p>Inserisci la tua email. Ti invieremo l'istruzioni per recuperare la password.</p>
+    <input type="email" id="emailInput" placeholder="Inserisci la tua email" required>
+    <button onclick="recuperaPassword()">Invia</button>
+    <a href="login.html" class="back-link">Torna al Login</a>
+  </div>
+
+  <script>
+    function recuperaPassword() {
+      const email = document.getElementById("emailInput").value.trim();
+
+      if (email === "") {
+        alert("Inserisci un'email valida.");
+        return;
+      }
+
+      alert("Se l'indirizzo email è corretto, riceverai un messaggio con l'istruzioni per recuperare la password.");
+
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 2500);
+    }
+  </script>
+</body>
+</html>

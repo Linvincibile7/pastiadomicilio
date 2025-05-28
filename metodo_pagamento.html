@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>procedura di pagamento</title>
+  <link rel="stylesheet" href="metodo_pagamento.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Inserisci i dati della tua Carta</h1>
+    <form action="conferma_pagamento.html" method="post">
+      <input type="text" name="nome" placeholder="Nome sulla carta" required><br>
+      <input type="text" name="numero_carta" placeholder="Numero della carta" required maxlength="16"><br>
+      <input type="text" name="scadenza" placeholder="Data di scadenza (MM/AA)" required><br>
+      <input type="password" name="cvv" placeholder="CVV" required maxlength="3"><br>
+      <input type="submit" value="Conferma Pagamento">
+    </form>
+  </div>
+</body>
+
+</html>

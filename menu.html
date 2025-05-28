@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menù Pasti a Domicilio</title>
+    <script src="cart.js"></script>
+    <link rel="stylesheet" href="menu.css">
+</head>
+
+<body>
+    <main class="container">
+        <h1>Menù</h1>
+        <div class="carrello">
+            <a href="carrello.html"><strong>Vai al Carrello</strong></a>
+        </div>
+        <section class="home-menu">
+            <article>
+                <div>
+                    <h2>Lunedì</h2>
+                </div>
+                <div class="read-more">
+                    <h3>Lasagna</h3>
+                    <p class="allergeni">Contiene: Glutine, Lattosio, Uova</p>
+                    <div><strong>CHF 12.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Lasagna', 12.00)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Insalata di pollo</h3>
+                    <p class="allergeni">Contiene: Uova</p>
+                    <div><strong>CHF 8.50</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Insalata di pollo', 8.50)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Zuppa di verdure</h3>
+                    <p class="allergeni">Contiene: Nessun allergene</p>
+                    <div><strong>CHF 6.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Zuppa di verdure', 6.00)">Aggiungi al carrello</button>
+                </div>
+            </article>
+            <article>
+                <div>
+                    <h2>Martedì</h2>
+                </div>
+                <div class="read-more">
+                    <h3>Pasta al sugo</h3>
+                    <p class="allergeni">Contiene: Glutine</p>
+                    <div><strong>CHF 10.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Pasta al sugo', 10.00)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Insalata verde</h3>
+                    <p class="allergeni">Contiene: Nessun allergene</p>
+                    <div><strong>CHF 6.50</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Insalata verde', 6.50)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Filetto di manzo con patate</h3>
+                    <p class="allergeni">Contiene: Nessun allergene</p>
+                    <div><strong>CHF 15.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Filetto di manzo con patate', 15.00)">Aggiungi al carrello</button>
+                </div>
+            </article>
+            <article>
+                <div>
+                    <h2>Mercoledì</h2>
+                </div>
+                <div class="read-more">
+                    <h3>Pasta al pesto</h3>
+                    <p class="allergeni">Contiene: Glutine, Lattosio, Frutta a guscio</p>
+                    <div><strong>CHF 10.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Pasta al pesto', 10.00)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Pureè con verdure</h3>
+                    <p class="allergeni">Contiene: Lattosio</p>
+                    <div><strong>CHF 11.50</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Pureè con verdure', 11.50)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Riso e pollo</h3>
+                    <p class="allergeni">Contiene: Nessun allergene</p>
+                    <div><strong>CHF 12.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Riso e pollo', 12.00)">Aggiungi al carrello</button>
+                </div>
+            </article>
+            <article>
+                <div>
+                    <h2>Giovedì</h2>
+                </div>
+                <div class="read-more">
+                    <h3>Risotto alla milanese</h3>
+                    <p class="allergeni">Contiene: Lattosio</p>
+                    <div><strong>CHF 12.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Risotto alla milanese', 12.00)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Filetto di merluzzo</h3>
+                    <p class="allergeni">Contiene: Pesce, Glutine, Uova</p>
+                    <div><strong>CHF 15.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Filetto di merluzzo', 15.00)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Zuppa</h3>
+                    <p class="allergeni">Contiene: Nessun allergene</p>
+                    <div><strong>CHF 6.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Zuppa', 6.00)">Aggiungi al carrello</button>
+                </div>
+            </article>
+            <article>
+                <div>
+                    <h2>Venerdì</h2>
+                </div>
+                <div class="read-more">
+                    <h3>Pasta ai gamberetti</h3>
+                    <p class="allergeni">Contiene: Crostacei, Glutine, Lattosio</p>
+                    <div><strong>CHF 10.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Pasta ai gamberetti', 10.00)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Insalata mista</h3>
+                    <p class="allergeni">Contiene: Nessun allergene</p>
+                    <div><strong>CHF 8.50</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Insalata mista', 8.50)">Aggiungi al carrello</button>
+                </div>
+                <div class="read-more">
+                    <h3>Filetto di orata con verdure</h3>
+                    <p class="allergeni">Contiene: Pesce, Lattosio</p>
+                    <div><strong>CHF 15.00</strong></div>
+                    <button class="read-more" onclick="aggiungiAlCarrello('Filetto di orata con verdure', 15.00)">Aggiungi al carrello</button>
+                </div>
+            </article>
+        </section>
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Consegne</title>
+    <link rel="stylesheet" href="gestione_consegne.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Consegne</h1>
+
+        <div class="consegna">
+            <h2>Ordine #001</h2>
+            <p>Cliente: Gino Bernasconi</p>
+            <p>Indirizzo: Via delle pace 5, Locarno</p>
+            <div class="traccia">
+                <div class="barra" style="width: 33%;">In preparazione</div>
+            </div>
+            <button class="btn stato" onclick="avanzaStato(this)">Aggiorna Stato</button>
+
+            <div class="extra-info">
+                <label>
+                    <input type="checkbox" class="ritiro-vassoi"> Vassoi ritirati
+                </label>
+                <br>
+                <label>
+                    Stato di salute:
+                    <select class="salute-anziano">
+                        <option value="">-- Seleziona --</option>
+                        <option value="Buono">Buono</option>
+                        <option value="Richiede attenzione">Richiede attenzione</option>
+                    </select>
+                </label>
+                <br>
+                <button class="btn conferma" onclick="confermaConsegna(this)">Conferma Consegna</button>
+            </div>
+        </div>
+
+        <div class="consegna">
+            <h2>Ordine #002</h2>
+            <p>Cliente: Tiziana Falardi</p>
+            <p>Indirizzo: Via Pratocarasso 12, Bellinzona</p>
+            <div class="traccia">
+                <div class="barra" style="width: 66%;">In consegna</div>
+            </div>
+            <button class="btn stato" onclick="avanzaStato(this)">Aggiorna Stato</button>
+
+            <div class="extra-info">
+                <label>
+                    <input type="checkbox" class="ritiro-vassoi"> Vassoi ritirati
+                </label>
+                <br>
+                <label>
+                    Stato di salute:
+                    <select class="salute-anziano">
+                        <option value="">-- Seleziona --</option>
+                        <option value="Buono">Buono</option>
+                        <option value="Richiede attenzione">Richiede attenzione</option>
+                    </select>
+                </label>
+                <br>
+                <button class="btn conferma" onclick="confermaConsegna(this)">Conferma Consegna</button>
+            </div>
+        </div>
+
+        <div class="consegna">
+            <h2>Ordine #003</h2>
+            <p>Cliente: Pasqualino Verdi</p>
+            <p>Indirizzo: Via Tesserete 45, Lugano</p>
+            <div class="traccia">
+                <div class="barra" style="width: 100%;">Consegnata</div>
+            </div>
+            <button class="btn stato" onclick="avanzaStato(this)">Aggiorna Stato</button>
+
+            <div class="extra-info">
+                <label>
+                    <input type="checkbox" class="ritiro-vassoi"> Vassoi ritirati
+                </label>
+                <br>
+                <label>
+                    Stato di salute:
+                    <select class="salute-anziano">
+                        <option value="">-- Seleziona --</option>
+                        <option value="Buono">Buono</option>
+                        <option value="Richiede attenzione">Richiede attenzione</option>
+                    </select>
+                </label>
+                <br>
+                <button class="btn conferma" onclick="confermaConsegna(this)">Conferma Consegna</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function avanzaStato(button) {
+            const barra = button.previousElementSibling.querySelector('.barra');
+            let stato = barra.innerText;
+
+            if (stato === "In preparazione") {
+                barra.style.width = "66%";
+                barra.innerText = "In consegna";
+                alert("Ordine in consegna");
+            } else if (stato === "In consegna") {
+                barra.style.width = "100%";
+                barra.innerText = "Consegnata";
+            } else {
+                alert("Ordine già consegnato.");
+            }
+        }
+
+        function confermaConsegna(button) {
+            const container = button.closest('.consegna');
+            const ritiro = container.querySelector('.ritiro-vassoi').checked;
+            const salute = container.querySelector('.salute-anziano').value;
+
+            if (!salute) {
+                alert("Seleziona lo stato di salute dell'anziano.");
+                return;
+            }
+
+            alert(
+                `Conferma:\n- Vassoi ritirati: ${ritiro ? "Sì" : "No"}\n- Stato di salute: ${salute}`
+            );
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>

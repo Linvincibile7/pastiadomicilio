@@ -1,0 +1,83 @@
+body {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+    url('../img/healthy-food-pictures-km9yurcpjzjofsf4.jpg');   
+    font-family: Arial, sans-serif;
+}
+
+.carrello {
+    text-align: right;
+}
+
+.carrello a:link,
+.carrello a:visited {
+    
+    padding: 16px 32px;
+    background-color: lightgreen;
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 8px;
+    border: 2px solid #333;
+
+}
+
+.carrello a:hover,
+.carrello a:active {
+    background-color: #4CAF50;
+
+}
+.container {
+    width: 100%;
+    margin: 0;
+  
+}
+
+h1 {
+    text-align: center;
+    margin: 40px 0 48px 0;
+    font-size: 48px;
+}
+.home-menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0 52px 0;
+}
+
+article {
+    border: 2px solid #333;
+    padding: 20px;
+    border-radius: 8px;
+    width: 250px;
+    background-color: lightgreen;
+}
+
+article h2 {
+    text-align: center;
+}
+
+article h3 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+article .read-more {
+    text-align: center;
+    margin: 16px 0 8px 0;
+}
+
+.allergeni {
+    font-size: 13px;
+    color: #b30000;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+
+@media (max-width: 768px) {
+    .home-menu{
+        flex-direction: column;
+        margin-bottom: 30px;
+    }
+    
+}
+ 

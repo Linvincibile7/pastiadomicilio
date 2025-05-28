@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #98fb98;
+    margin: 50px;
+
+}
+
+.container {
+    background-color: white;
+    ;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: auto;
+}
+
+form {
+    background-color: white;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #fcc;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    color: black;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.perdita {
+    text-align: center;
+    margin-top: 10px;
+
+}
+
+.perdita a {
+    color: blue;
+    font-size: 15px;
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 20px;
+    }
+
+    .container, form {
+        padding: 15px;
+        max-width: 90%;
+    }
+
+    input, select, button {
+        font-size: 16px;
+    }
+
+    .perdita a {
+        font-size: 14px;
+    }
+}

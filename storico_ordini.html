@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storico Ordini</title>
+    <link rel="stylesheet" href="storico_ordini.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Storico Ordini</h1>
+
+        <div class="filtro-data">
+            <label for="dataFiltro">Filtra per data:</label>
+            <input type="date" id="dataFiltro" onchange="filtraPerData()">
+            <button onclick="resetFiltro()" id="resetBtn">Reset Filtro</button>
+        </div>
+
+        <div class="ordine">
+            <h2>Ordine #010</h2>
+            <p class="data-ordine">Data: 10.01.2025</p>
+            <p>Totale: CHF 16.50</p>
+            <p class="stato consegnato">Consegnato</p>
+            <button class="dettagli" onclick="toggleDettagli(this)">Visualizza Dettagli</button>
+
+            <div class="dettagli-ordine hidden">
+                <ul>
+                    <li>Pasta al sugo - CHF 10.00</li>
+                    <li>Insalata verde - CHF 6.50</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ordine">
+            <h2>Ordine #025</h2>
+            <p class="data-ordine">Data: 15.05.2025</p>
+            <p>Totale: CHF 18.00</p>
+            <p class="stato in-preparazione">In preparazione</p>
+            <button class="dettagli" onclick="toggleDettagli(this)">Visualizza Dettagli</button>
+
+            <div class="dettagli-ordine hidden">
+                <ul>
+                    <li>Risotto alla milanese - CHF 12.00</li>
+                    <li>Zuppa di verdure - CHF 6.00</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ordine">
+            <h2>Ordine #120</h2>
+            <p class="data-ordine">Data: 20.05.2024</p>
+            <p>Totale: CHF 20.50</p>
+            <p class="stato annullato">Annullato</p>
+            <button class="dettagli" onclick="toggleDettagli(this)">Visualizza Dettagli</button>
+
+            <div class="dettagli-ordine hidden">
+                <ul>
+                    <li>Lasagna - CHF 12.00</li>
+                    <li>Insalata di Pollo - CHF 8.50</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function toggleDettagli(button) {
+            const dettagliBox = button.nextElementSibling;
+            if (dettagliBox.classList.contains('hidden')) {
+                dettagliBox.classList.remove('hidden');
+                button.innerText = "Nascondi Dettagli";
+            } else {
+                dettagliBox.classList.add('hidden');
+                button.innerText = "Visualizza Dettagli";
+            }
+        }
+    </script>
+
+    <script>
+        function filtraPerData() {
+            const dataFiltro = document.getElementById("dataFiltro").value;
+            const ordini = document.querySelectorAll(".ordine");
+
+            if (!dataFiltro) {
+                ordini.forEach(ordine => {
+                    ordine.style.display = "block";
+                });
+                return;
+            }
+
+            const [anno, mese, giorno] = dataFiltro.split("-");
+            const dataFiltroFormattata = `${giorno}.${mese}.${anno}`;
+
+            ordini.forEach(ordine => {
+                const dataTesto = ordine.querySelector(".data-ordine").textContent.trim();
+                const dataOrdine = dataTesto.split(":")[1]?.trim();
+
+                if (dataOrdine === dataFiltroFormattata) {
+                    ordine.style.display = "block";
+                } else {
+                    ordine.style.display = "none";
+                }
+            });
+        }
+    </script>
+    
+    <script>
+        function resetFiltro() {
+            document.getElementById("dataFiltro").value = "";
+            filtraPerData();
+        }
+    </script>
+</body>
+
+</html>

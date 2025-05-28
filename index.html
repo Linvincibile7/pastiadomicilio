@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasti a Domicilio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="index.css">
+    
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="menu.html"><i class="fas fa-utensils"></i> Menù</a></li>
+                <li><a href="gestione_consegne.html"><i class="fas fa-truck"></i> Consegne</a></li>
+                <li><a href="gestione_fatture.html"><i class="fas fa-file-invoice"></i> Fatture</a></li>
+                <li><a href="storico_ordini.html"><i class="fas fa-history"></i> Storico</a></li>
+            </ul>
+            <div class="contenitore-accesso">
+                <a href="utenti.html"><i class="fas fa-users"></i> Utenti</a>
+                <a href="modifica_dati.html"><i class="fas fa-user-edit"></i> Profilo</a>
+                <a href="iscrizione.html"><i class="fas fa-user-plus"></i> Iscrizione</a>
+                <a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="title">
+        <h1>Benvenuto nel Servizio Pasti a Domicilio</h1>
+        <p>Un servizio dedicato per garantire pasti caldi, nutrienti e deliziosi agli anziani della nostra comunità</p>
+    </section>
+
+    <section class="features container">
+        <h2 class="section-title">I Nostri Servizi</h2>
+        <div class="features-grid" id="services-container">
+            <!-- Le card verranno caricate dinamicamente via JavaScript -->
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Cosa dicono di noi</h2>
+            <div class="testimonial-slider" id="testimonial-slider">
+                <!-- Le testimonianze verranno caricate dinamicamente -->
+            </div>
+        </div>
+    </section>
+
+    <section class="team container">
+        <h2 class="section-title">Il Nostro Team</h2>
+        <div class="team-grid" id="team-container">
+            <!-- I membri del team verranno caricate dinamicamente -->
+        </div>
+    </section>
+
+    <section class="coverage container">
+        <h2 class="section-title">Zone di Consegna</h2>
+        <div id="map"></div>
+        <div class="zone-list" id="zone-list">
+            <!-- Le zone verranno caricate dinamicamente -->
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contattaci</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <div>
+                            <h3>Indirizzo</h3>
+                            <p>Via Nosetto 3, Bellinzona</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt contact-icon"></i>
+                        <div>
+                            <h3>Telefono</h3>
+                            <p>+41 91 816 90 56</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>info@pastiadomicilio.ch</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock contact-icon"></i>
+                        <div>
+                            <h3>Orari</h3>
+                            <p>Lun-Ven: 8:00-18:00</p>
+                            <p>Sab: 8:00-12:00</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Oggetto</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Seleziona...</option>
+                            <option value="info">Informazioni</option>
+                            <option value="service">Servizio Clienti</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Altro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Messaggio</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Invia Messaggio</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>&copy; 2025 Pasti a Domicilio di Simone D'Ora, Viola Rizzi e Dejan Tanackovic</p>
+        <p>Tutti i diritti sono riservati</p>
+        <p>Le foto sono state generate tramite ChatGpt</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Dati dinamici per le card dei servizi
+        const servicesData = [
+            {
+                icon: "fas fa-utensils",
+                title: "Menu Personalizzati",
+                description: "Piatti bilanciati preparati con ingredienti freschi, pensati per le esigenze nutrizionali degli anziani"
+            },
+            {
+                icon: "fas fa-truck",
+                title: "Consegna Puntuale",
+                description: "Servizio di consegna affidabile che rispetta gli orari concordati"
+            },
+            {
+                icon: "fas fa-heart",
+                title: "Cura e Attenzione",
+                description: "Personale specializzato che porta non solo il pasto, ma anche un sorriso"
+            },
+            {
+                icon: "fas fa-calendar-check",
+                title: "Pianificazione Flessibile",
+                description: "Possibilità di programmare le consegne in base alle tue esigenze"
+            }
+        ];
+
+        // Dati per le testimonianze
+        const testimonialsData = [
+            {
+                text: "Il servizio è eccellente! Mio padre riceve pasti caldi e nutrienti ogni giorno, e il personale è sempre gentile e professionale.",
+                author: "Simone Rossi"
+            },
+            {
+                text: "Finalmente un servizio che mi permette di avere pasti sani senza dover cucinare. I piatti sono deliziosi e arrivano sempre puntuali.",
+                author: "Giulia Bianchi"
+            },
+            {
+                text: "La qualità del cibo è ottima e il servizio è molto affidabile. Consigliato a tutti coloro che cercano un aiuto per i propri cari.",
+                author: "Gioele Esposito"
+            }
+        ];
+
+        // Dati per il team
+        const teamData = [
+            {
+                name: "Simone D'Ora",
+                role: "Responsabile Progetto e Comunicazioni",
+            },
+            {
+                name: "Viola Rizzi",
+                role: "Responsabile Progetto",
+            },
+            {
+                name: "Dejan Tanackovic",
+                role: "Responsabile Progetto",
+            }
+        ];
+
+        // Zone di consegna
+        const deliveryZones = [
+            "Bellinzona", "Lugano", "Locarno", "Mendrisio", "Biasca",
+            "Chiasso", "Gordola", "Giubiasco", "Massagno"
+        ];
+
+        // Coordinate per la mappa (Bellinzona)
+        const mapCenter = [46.1946, 9.0244];
+
+        // Funzione per caricare le card dei servizi
+        function loadServices() {
+            const container = document.getElementById('services-container');
+
+            servicesData.forEach((service, index) => {
+                const card = document.createElement('div');
+                card.className = 'feature-card';
+                card.innerHTML = `
+                    <div class="feature-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <h3>${service.title}</h3>
+                    <p>${service.description}</p>
+                `;
+                container.appendChild(card);
+
+                // Animazione con delay progressivo
+                setTimeout(() => {
+                    card.classList.add('visible');
+                }, 150 * index);
+            });
+        }
+
+        // Funzione per il carosello di testimonianze
+        function initTestimonials() {
+            const slider = document.getElementById('testimonial-slider');
+
+            // Aggiungi testimonianze
+            testimonialsData.forEach((testimonial, index) => {
+                const slide = document.createElement('div');
+                slide.className = `testimonial-slide ${index === 0 ? 'active' : ''}`;
+                slide.innerHTML = `
+                    <p class="testimonial-text">${testimonial.text}</p>
+                    <p class="testimonial-author">- ${testimonial.author}</p>
+                `;
+                slider.appendChild(slide);
+            });
+
+            // Aggiungi punti di controllo
+            const controls = document.createElement('div');
+            controls.className = 'slider-controls';
+
+            testimonialsData.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+                dot.dataset.index = index;
+                controls.appendChild(dot);
+            });
+
+            slider.appendChild(controls);
+
+            // Logica del carosello
+            let currentIndex = 0;
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            // Auto-scroll ogni 5 secondi
+            setInterval(() => {
+                const nextIndex = (currentIndex + 1) % slides.length;
+                showSlide(nextIndex);
+            }, 5000);
+
+            // Click sui punti
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    showSlide(parseInt(dot.dataset.index));
+                });
+            });
+        }
+
+        // Funzione per caricare il team
+        function loadTeam() {
+            const container = document.getElementById('team-container');
+
+            teamData.forEach(member => {
+                const memberCard = document.createElement('div');
+                memberCard.className = 'team-member';
+                memberCard.innerHTML = `
+                    <div class="member-info">
+                        <h3 class="member-name">${member.name}</h3>
+                        <p class="member-role">${member.role}</p>
+                    </div>
+                `;
+                container.appendChild(memberCard);
+            });
+        }
+
+        // Funzione per inizializzare la mappa
+        function initMap() {
+            const map = L.map('map').setView(mapCenter, 11);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Aggiungi marker
+            L.marker(mapCenter).addTo(map)
+                .bindPopup('Sede principale<br>Pasti a Domicilio')
+                .openPopup();
+
+        }
+
+        // Funzione per caricare le zone di consegna
+        function loadDeliveryZones() {
+            const container = document.getElementById('zone-list');
+
+            deliveryZones.forEach(zone => {
+                const tag = document.createElement('div');
+                tag.className = 'zone-tag';
+                tag.textContent = zone;
+                container.appendChild(tag);
+            });
+        }
+
+        // Funzione per il form di contatto
+        function setupContactForm() {
+            const form = document.getElementById('contact-form');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Qui potresti aggiungere la logica per inviare il form
+                alert('Grazie per il tuo messaggio! Ti risponderemo al più presto.');
+                form.reset();
+            });
+        }
+
+        // Funzione per osservare gli elementi
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.feature-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // Carica tutto quando il DOM è pronto
+        document.addEventListener('DOMContentLoaded', () => {
+            loadServices();
+            initTestimonials();
+            loadTeam();
+            initMap();
+            loadDeliveryZones();
+            setupContactForm();
+            observeElements();
+
+            // Adatta l'altezza dell'hero in base alla viewport
+            function adjustHeroHeight() {
+                const hero = document.querySelector('.hero');
+                hero.style.height = `${window.innerHeight * 0.6}px`;
+            }
+
+            window.addEventListener('resize', adjustHeroHeight);
+            adjustHeroHeight();
+        });
+    </script>
+</body>
+
+</html>

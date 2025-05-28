@@ -1,0 +1,97 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #98fb98;
+    padding: 20px;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    color: black;
+    margin-bottom: 30px;
+}
+
+.fattura-box {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.fattura-box h2 {
+    color: black;
+    margin-top: 0;
+}
+
+.dettagli p {
+    margin: 6px 0;
+    font-size: 15px;
+}
+
+.dettagli ul {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.totale {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.stato {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #ff8c00;
+}
+
+.bottoni {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.bottoni button {
+    padding: 8px 14px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.pagata {
+    background-color: #4CAF50;
+}
+
+.annullata {
+    background-color: #f44336;
+}
+
+.attesa {
+    background-color: #ff8c00;
+}
+
+.scaricata {
+    background-color: blue;
+}
+
+.posizione {
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .bottoni {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .posizione {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Fatture</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="gestione_fatture.css">
+</head>
+
+<body>
+    <div class="fattura-box">
+        <h1>Fatture</h1>
+
+        <div class="fattura-box">
+            <h2>Fattura #001</h2>
+            <div class="dettagli">
+                <p><strong>Cliente:</strong> Gino Bernasconi</p>
+                <p><strong>Data:</strong> 15 maggio 2025</p>
+                <p><strong>Articoli:</strong></p>
+                <ul>
+                    <li>Lasagna - CHF 12.00</li>
+                    <li>Insalata di pollo - CHF 8.50</li>
+                </ul>
+                <div class="totale">Totale: CHF 20.50</div>
+                <div id="stato1" class="stato">Stato: In attesa</div>
+            </div>
+            <div class="bottoni">
+                <button class="pagata" onclick="cambiaStato('stato1', 'Pagata')">Pagata</button>
+                <button class="annullata" onclick="cambiaStato('stato1', 'Annullata')">Annullata</button>
+                <button class="attesa" onclick="cambiaStato('stato1', 'In attesa')">In attesa</button>
+                <div class="posizione">
+                    <button class="scaricata" onclick="verificaEgeneraFattura1()">Scarica PDF</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="fattura-box">
+            <h2>Fattura #002</h2>
+            <div class="dettagli">
+                <p><strong>Cliente:</strong> Tiziana Falardi</p>
+                <p><strong>Data:</strong> 14 maggio 2025</p>
+                <p><strong>Articoli:</strong></p>
+                <ul>
+                    <li>Zuppa di verdure - CHF 6.00</li>
+                    <li>Filetto di merluzzo - CHF 15.00</li>
+                </ul>
+                <div class="totale">Totale: CHF 21.00</div>
+                <div id="stato2" class="stato">Stato: In attesa</div>
+            </div>
+            <div class="bottoni">
+                <button class="pagata" onclick="cambiaStato('stato2', 'Pagata')">Pagata</button>
+                <button class="annullata" onclick="cambiaStato('stato2', 'Annullata')">Annullata</button>
+                <button class="attesa" onclick="cambiaStato('stato2', 'In attesa')">In attesa</button>
+                <div class="posizione">
+                    <button class="scaricata" onclick="verificaEgeneraFattura2()">Scarica PDF</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="fattura-box">
+            <h2>Fattura #003</h2>
+            <div class="dettagli">
+                <p><strong>Cliente:</strong> Pasqualino Verdi</p>
+                <p><strong>Data:</strong> 20 maggio 2025</p>
+                <p><strong>Articoli:</strong></p>
+                <ul>
+                    <li>Pasta al pesto - CHF 10.00</li>
+                    <li>Insalata verde - CHF 6.50</li>
+                </ul>
+                <div class="totale">Totale: CHF 16.50</div>
+                <div id="stato3" class="stato">Stato: In attesa</div>
+            </div>
+            <div class="bottoni">
+                <button class="pagata" onclick="cambiaStato('stato3', 'Pagata')">Pagata</button>
+                <button class="annullata" onclick="cambiaStato('stato3', 'Annullata')">Annullata</button>
+                <button class="attesa" onclick="cambiaStato('stato3', 'In attesa')">In attesa</button>
+                <div class="posizione">
+                    <button class="scaricata" onclick="verificaEgeneraFattura3()">Scarica PDF</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function cambiaStato(id, stato) {
+            const elemento = document.getElementById(id);
+            elemento.textContent = "Stato: " + stato;
+
+            if (stato === "Pagata") {
+                elemento.style.color = "#4CAF50";
+            } else if (stato === "Annullata") {
+                elemento.style.color = "#f44336";
+            } else {
+                elemento.style.color = "#ff8c00";
+            }
+        }
+    </script>
+
+    <script>
+        function verificaEgeneraFattura1() {
+            var statoElement = document.getElementById("stato1");
+            var stato = statoElement.textContent.replace("Stato: ", "").trim();
+
+            if (stato === "Pagata") {
+                generaFattura1();
+            } else {
+                alert("Non puoi scaricare la fattura finché non viene marcata come 'Pagata'.");
+            }
+        }
+        async function generaFattura1() {
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text("Fattura #001", 20, 20);
+
+            doc.setFontSize(12);
+            doc.setFont("Helvetica", "normal");
+            doc.text("Cliente: Gino Bernasconi", 20, 30);
+            doc.text("Data: 15/05/2025", 20, 40);
+            doc.text("Indirizzo: Via delle pace 5, Locarno", 20, 50);
+
+            doc.text("Dettagli ordine:", 20, 70);
+            doc.text(" - Lasagna                CHF 12.00", 25, 80);
+            doc.text(" - Insalata di pollo       CHF 8.50", 25, 90);
+            doc.text("Totale: CHF 20.50", 20, 120);
+
+            doc.text("Stato: Pagata", 20, 140);
+
+            doc.save("Fattura_001.pdf");
+        }
+    </script>
+
+    <script>
+        function verificaEgeneraFattura2() {
+            var statoElement = document.getElementById("stato2");
+            var stato = statoElement.textContent.replace("Stato: ", "").trim();
+
+            if (stato === "Pagata") {
+                generaFattura2();
+            } else {
+                alert("Non puoi scaricare la fattura finché non viene marcata come 'Pagata'.");
+            }
+        }
+        async function generaFattura2() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text("Fattura #002", 20, 20);
+
+            doc.setFontSize(12);
+            doc.setFont("Helvetica", "normal");
+            doc.text("Cliente: Tiziana Falardi", 20, 30);
+            doc.text("Data: 14/05/2025", 20, 40);
+            doc.text("Indirizzo: Via Pratocarasso 12, Bellinzona", 20, 50);
+
+            doc.text("Dettagli ordine:", 20, 70);
+            doc.text(" - Zuppa di verdure            CHF 6.00", 25, 80);
+            doc.text(" - Filetto di merluzzo        CHF 15.00", 25, 90);
+            doc.text("Totale: CHF 21.00", 20, 120);
+
+            doc.text("Stato: Pagata", 20, 140);
+
+            doc.save("Fattura_002.pdf");
+        }
+    </script>
+
+    <script>
+        function verificaEgeneraFattura3() {
+            var statoElement = document.getElementById("stato3");
+            var stato = statoElement.textContent.replace("Stato: ", "").trim();
+
+            if (stato === "Pagata") {
+                generaFattura3();
+            } else {
+                alert("Non puoi scaricare la fattura finché non viene marcata come 'Pagata'.");
+            }
+        }
+
+        async function generaFattura3() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont("Helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text("Fattura #003", 20, 20);
+
+            doc.setFontSize(12);
+            doc.setFont("Helvetica", "normal");
+            doc.text("Cliente: Pasqualino Verdi", 20, 30);
+            doc.text("Data: 20/05/2025", 20, 40);
+            doc.text("Indirizzo: Via Tesserete 45, Lugano", 20, 50);
+
+            doc.text("Dettagli ordine:", 20, 70);
+            doc.text(" - Pasta al pesto         CHF 10.00", 25, 80);
+            doc.text(" - Insalata verde          CHF 6.50", 25, 90);
+            doc.text("Totale: CHF 16.50", 20, 120);
+
+            doc.text("Stato: Pagata", 20, 140);
+
+            doc.save("Fattura_003.pdf");
+        }
+    </script>
+
+</body>
+
+</html>

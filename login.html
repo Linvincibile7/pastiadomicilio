@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form action="submit_login.php" method="post">
+
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" name="cognome" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="button" onclick="Accedi()">Accedi</button>
+
+            <div class="perdita">
+                <a href="recupero_account.html">Password dimenticata?</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function Accedi() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+
+</html>
